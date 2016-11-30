@@ -2,34 +2,21 @@
   <div>
     <i class='fa fa-align-justify icon-large' id='toggle'></i>
     <ul id='dock'>
-      <li class='active launcher'>
+      <li class="launcher" v-bind:class="{active:indexA}" v-on:click="greet">
         <i class="fa fa-desktop"></i>
         <router-link to="/index">首页</router-link>
         <!--<a href="#">首页1</a>-->
       </li>
-      <li class='launcher'>
-        <i class="fa  fa-cloud"></i>
-        <router-link to="/could">云产品库</router-link>
-      </li>
-      <li class='launcher'>
-        <i class="fa  fa-shopping-cart"></i>
-        <a href="#">导购系统</a>
-      </li>
-      <li class='launcher'>
+
+
+      <li class='launcher' v-bind:class="{active:linkA}" v-on:click="greet">
         <i class="fa fa-retweet"></i>
-        <a href="#">消息转换</a>
+        <router-link to="/link">链接转换</router-link>
       </li>
-      <li class='launcher'>
-        <i class="fa fa-comments"></i>
-        <a href="#">群消息监控</a>
-      </li>
-      <li class='launcher'>
-        <i class="fa fa-cubes"></i>
-        <a href="#">实用工具</a>
-      </li>
-      <li class='launcher'>
-        <i class="fa fa-building-o"></i>
-        <a href="#">订单查询</a>
+
+      <li class='launcher' v-bind:class="{active:settingA}" v-on:click="greet">
+        <i class="fa fa-cog"></i>
+        <router-link to="/setting">软件设置</router-link>
       </li>
 
 
@@ -50,21 +37,49 @@
 //     $(this).attr('class','active launcher')
 // }
 
-  var _lis=document.getElementsByTagName("li");
-  console.log(document.getElementsByTagName("li").length)
-  for(var x in _lis)
-  {
+  // var _lis=document.getElementsByTagName("li");
+  // console.log(document.getElementsByTagName("li").length)
+  // for(var x in _lis)
+  // {
     
-    //console.log(_lis)
-    //  _lis[x].className="launcher";
-  }
-
+  //   //console.log(_lis)
+  //   //  _lis[x].className="launcher";
+  // }
+var data_1={
+      indexA:true,
+      linkA:false,
+      settingA:false,
+      img_per:require('../images/person.png')
+    }
  export default{
+    //let indexA
+    
     data:function()
     {
-        return{
-          img_per:require('../images/person.png')
-        }
+        return data_1
+    },
+    methods: {
+    greet: function (event) {
+      console.log(event.srcElement.hash.replace(/#/,''))
+      switch(event.srcElement.hash.replace(/#/,'')){
+        case '/index':
+          data_1.indexA=true;
+          data_1.linkA=false;
+          data_1.settingA=false;
+          
+          break;
+        case '/link':
+           data_1.indexA=false;
+           data_1.linkA=true;
+           data_1.settingA=false;
+          break;
+        case '/setting':
+           data_1.indexA=false;
+           data_1.linkA=false;
+           data_1.settingA=true;
+          break;
+      }
     }
+  }
   }
 </script>

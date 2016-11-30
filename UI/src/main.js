@@ -6,8 +6,8 @@ import App from './App.vue'
 import './assets/stylesheets/application-a07755f5.css'
 import './assets/font-awesome/css/font-awesome.min.css'
 import Index from './assets/pages/index.vue'
-import Could from './assets/pages/could.vue'
-
+import Link from './assets/pages/link.vue'
+import Setting from './assets/pages/setting.vue'
 Vue.use(ElementUI)
 Vue.use(VueRouter);
 const routes = [
@@ -16,9 +16,9 @@ const routes = [
 
             { path: 'index', name:'index', component: Index },
 
-            { path: 'could', name:'could', component: Could },
+            { path: 'link', name:'link', component: Link },
 
-            { path: 'page2/:id', name:'page2', component: Index }
+            { path: 'setting', name:'setting', component: Setting }
         ]
     }
 ];
